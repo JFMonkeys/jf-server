@@ -23,7 +23,7 @@ public class BaseGuiceModule extends AbstractModule {
     @Override
     protected void configure() {
 
-        ServiceVehicle serviceVehicle = new ServiceVehicle(8080);
+        ServiceVehicle serviceVehicle = new ServiceVehicle(80);
         bind(ServiceVehicle.class).toInstance(serviceVehicle);
         Vertx vertx = Vertx.vertx();
         bind(Router.class).toInstance(Router.router(vertx));
