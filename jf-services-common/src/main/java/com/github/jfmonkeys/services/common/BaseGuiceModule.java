@@ -23,7 +23,12 @@ public class BaseGuiceModule extends AbstractModule {
     @Override
     protected void configure() {
 
-        ServiceVehicle serviceVehicle = new ServiceVehicle(80);
+        String port = System.getenv("PORT");
+        int portI = 8080;
+        if (port != null){
+            portI = Integer.parseInt(port);
+        }
+        ServiceVehicle serviceVehicle = new ServiceVehicle(portI);
         bind(ServiceVehicle.class).toInstance(serviceVehicle);
         Vertx vertx = Vertx.vertx();
         bind(Router.class).toInstance(Router.router(vertx));
